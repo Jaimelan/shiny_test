@@ -5,10 +5,13 @@ library(shiny)
 # 2 inputs
 ui <- fluidPage(
   # Html and style functions
-  tags$h1("Test for a Shiny app"),
-  tags$a(href = "https://github.com/Jaimelan", "My GitHub"),
+  h1("Test for a Shiny app"),
+  a(href = "https://github.com/Jaimelan", "My GitHub"),
   
-  tags$hr(),
+  hr(),
+  
+  img(src="mage.png"),
+  
   # Inputs
   sliderInput(inputId= "num", label = "Choose a number", min=10, max=100, value=10),
   textInput(inputId = "title", label = "Write a title", value = "Random Normal Values"),
