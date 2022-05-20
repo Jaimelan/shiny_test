@@ -10,20 +10,23 @@ ui <- fluidPage(
   
   hr(),
   
-  img(src="mage.png"),
-  
+ 
+
+  fluidRow(
   # Inputs
-  sliderInput(inputId= "num", label = "Choose a number", min=10, max=100, value=10),
-  textInput(inputId = "title", label = "Write a title", value = "Random Normal Values"),
-  
-  actionButton(inputId = "norm", label = "Normal"),
-  actionButton(inputId = "unif", label = "Uniform"),
-    
+    column(6, sliderInput(inputId= "num", label = "Choose a number", min=10, max=100, value=10)),
+    column(6, textInput(inputId = "title", label = "Write a title", value = "Random Normal Values")),
+  ),
+  wellPanel(
+    actionButton(inputId = "norm", label = "Normal"),
+    actionButton(inputId = "unif", label = "Uniform"),
+    ),
   
   # Reactive outputs
-  plotOutput("hist"),
-  verbatimTextOutput("stats")
-  
+  tabsetPanel(
+    tabPanel("Histogram", plotOutput("hist")),
+    tabPanel("Stat summary", verbatimTextOutput("stats"))
+  )
 ) 
 
 server <- function(input, output) {
